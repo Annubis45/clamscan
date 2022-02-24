@@ -1552,7 +1552,7 @@ class NodeClam {
                         console.log(`${self.debugLabel}: Configured clam command: ${command}}`);
 
                 // Execute the clam binary with the proper flags
-                execFile(command, (err, stdout, stderr) => {
+                execFile(self.settings[self.scanner].path, self._buildClamArgs(items), (err, stdout, stderr) => {
                     if (self.settings.debugMode) console.log(`${this.debugLabel}: stdout:`, stdout);
 
                     if (err) return parseStdout(err, stdout);
