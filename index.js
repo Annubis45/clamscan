@@ -1512,14 +1512,14 @@ class NodeClam {
 
                         // console.log("PATH: " + result)
                         let path = result.match(/^(.*): /);
-                        if (path && path.length > 0) {
-                            [path] = path;
+                        if (path && path.length > 1) {
+                            path = path[1];
                         } else {
                             path = '<Unknown File Path!>';
                         }
 
                         // eslint-disable-next-line no-control-regex
-                        if (/\s+OK(\u0000|[\r\n])$/.test(result)) {
+                         if (/\s+OK(\u0000|[\r\n])*$/.test(result)) {
                             if (self.settings.debugMode) console.log(`${this.debugLabel}: ${path} is OK!`);
                             goodFiles.push(path);
                         } else {
